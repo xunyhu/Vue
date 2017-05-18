@@ -1,2 +1,8 @@
-./demo01/test/node_modules
+#demo01
+demo01/test/node_modules
+
+##demo2
+demo02/node_modules
+
+##webstrom
 .idea
