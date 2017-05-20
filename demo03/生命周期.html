@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<p>{{ email }}</p>
+	</div>
+</body>
+	<script src="https://cdn.bootcss.com/vue/2.3.3/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			data : {
+				email : 'xunyihu@163.com'
+			},
+			created : function(){
+				alert('实例创建')
+			},
+			beforeMount : function() {
+				alert('编译之前')
+			},
+			mounted : function() {
+				alert('编译之后')
+			},
+			//数据改变时才触发update函数
+			beforeUpdate : function() {
+				alert('数据更新之前')
+			},
+			updated : function() {
+				alert('数据已更新')
+			},
+			ready : function() {
+				alert('添加到节点')
+			},
+			beforeDestroy : function() {
+				alert('实例销毁之前')
+			},
+			destroyed : function() {
+				alert('实例销毁完成')
+			}
+		})
+		//挂载到指定元素
+		vm.$mount('#app')
+		//销毁实例
+		vm.$destroy()
+	</script>
+</html>

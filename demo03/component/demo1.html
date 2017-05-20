@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="demo">
+		<first-component></first-component>
+	</div>
+</body>
+	<script src="https://cdn.bootcss.com/vue/2.3.3/vue.js"></script>
+	<script>
+		Vue.component('first-component',{
+			template : '<div>I am the first component</div>'
+		})
+		new Vue({
+			el : "#demo"			
+		})
+	</script>
+</html>
