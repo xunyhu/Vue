@@ -26,6 +26,9 @@ var router = new VueRouter({
 	},{
 		path : "/detail",
 		component : detail
+	},{
+		path: '/',
+		redirect: 'index'
 	}]
 });
 

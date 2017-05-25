@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<a v-link="{path: '/view-a'}">Go to view-a</a>
+	</div>
+</body>
+	<script src="https://cdn.bootcss.com/vue/2.3.3/vue.js"></script>
+	<script src="https://cdn.bootcss.com/vue-router/2.5.3/vue-router.js"></script>
+	<script>
+
+
+		// Vue.component('ViewA',{
+		// 	template : '<div>I am test component</div>'
+		// })
+		// Vue.component('ViewB',{
+		// 	template : '<div>componentB</div>'
+		// })
+
+		var ViewA = {
+			template : '<div>I am test component</div>'
+		}
+		var ViewB = {
+			template : '<div>componentB</div>'
+		}
+
+		var router = new VueRouter({
+			routes : [{
+				path : '/view-a',
+				component : ViewA
+			},{
+				path : '/view-b',
+				component : ViewB
+			}]
+		});
+
+		// router.map({
+		//   '/view-a': {
+		//     component: ViewA
+		//   },
+		//   '/view-b': {
+		//     component: ViewB
+		//   }
+		// });
+		//http://www.cnblogs.com/qingqingzou-143/p/6729065.html    router.map is not a function 报错原因
+
+		new Vue({
+			el : '#app',
+			router
+		})
+	</script>
+</html>
