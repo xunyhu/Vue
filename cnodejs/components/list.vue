@@ -21,19 +21,27 @@
 		    	<a class="topic_title" :href='"#/detail/"+item.id'   title="cnpm@5 beta 测试招募">{{ item.title }}</a>
 	  		</div>
 		</div>
+
+		<button @click='loadMore()'>加载下一页</button>		
+		<div class="more" v-show='flag'>
+			<mu-circular-progress :size="40" />
+		</div>
+ 		
+		
+		<back-top></back-top>
+
 	</div>	
 </template>
 <script>
 	import loading from './loading.vue'
 	import timeago from 'timeago.js'
+	import backTop from './backTop.vue'
 	export default {
 		data() {
 			return {
 				msg : "我是列表页",
-				// items: [],
 				load: '',
 				limit: 15,
-				page: 1,
 			}
 		},
   		filters: {
@@ -51,46 +59,33 @@
 			},
 			items : function() {
 				return this.$store.getters.listiTems;
+			},
+			page : function() {
+				return this.$store.getters.pageNum;
+			},
+			flag : function() {
+				return this.$store.getters.flag;
 			}
 		},
 		methods: {
 			toggle () {
 				this.$store.commit('hideSide',!this.$store.getters.showSide);
+			},
+			loadMore () {
+				this.$store.commit('addPage',++this.page)
 			}
 		},
 		mounted () {
 			this.$store.commit('setTab','all');
-
-			// //加载更多
-			// var self = this;
-
-			// $('.hlist').on('scroll',function(){
-			// 	self.scrollTop=$('.hlist')[0].scrollTop;
-			// 	console.log(self.scrollTop)
-			// 	console.log($('.hlist')[0].scrollHeight)
-			// 	console.log($('.hlist').height())
-			// 	if (self.scrollTop + $('.hlist')[0].scrollHeight <= $('.hlist').height() -50) {
-			// 		var tab = this.tab;
-			// 		var num = this.limit;
-			// 		this.load = true;
-			// 		$.ajax({
-			// 			type: "GET",
-			// 			url: "https://cnodejs.org/api/v1/topics?page="+ this.page +"limit="+ num +"&tab="+tab,
-			// 			dataType: "json",
-			// 			success: function(data) {
-			// 				self.items.conact(data.data);
-			// 				this.load = false;
-			// 			}.bind(this)
-			// 		})
-			// 	}
-			// })
 		},
 		components: {
-			loading
+			loading,
+			backTop,
 		}
 	}
 </script>
 <style scoped lang="scss">
+
 	.hlist {
 		margin-top:56px;
 	}
@@ -204,5 +199,5 @@
 	    -webkit-border-radius: 3px;
 	    font-size: 12px;
 	}
-
+	.more {margin:0 auto;width:40px;height:40px;}
 </style>

@@ -23,12 +23,29 @@ var store = new Vuex.Store({
 		tab: 'all',
 		open: false,
 		items: [],
+		page: 1,
+		flag: false,
 	},
 	mutations: {
 		hideSide: function(state,val) {
 			state.open = val;
 		},
+		addPage: function(state,val) {
+			//console.log(val);
+			state.page = val;
+			state.flag = true,
+			$.ajax({
+				type: 'get',
+				url: "https://cnodejs.org/api/v1/topics?page="+ val +"&tab="+ state.tab,
+				dataType: "json",
+				success: function(data) {
+					state.items = state.items.concat(data.data);
+					state.flag = false;
+				}
+			})
+		},
 		setTab: function(state,val) {
+			state.tab = val;
 			$.ajax({
 				type: 'get',
 				url: "https://cnodejs.org/api/v1/topics?tab="+ val,
@@ -39,6 +56,7 @@ var store = new Vuex.Store({
 				}
 			})
 		}
+
 	},
 	getters: {
 		showSide: function(state) {
@@ -49,6 +67,12 @@ var store = new Vuex.Store({
 		},
 		listiTems: function(state) {
 			return state.items;
+		},
+		pageNum: function(state) {
+			return state.page;
+		},
+		flag: function(state) {
+			return state.flag;
 		}
 	}
 })

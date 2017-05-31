@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="hrapp">
 	    <mu-drawer :open="open"  @close="toggle()">
 	      <mu-list  class="hlist">
 	      	<div class="login">
@@ -33,6 +33,9 @@
 	      		<mu-icon-button icon="backspace" slot="left"/>
 	        	<p >关闭</p>
 	      	</div>
+	      	 <p @click='touchs'>
+		      	<mu-switch v-model="touch"/> 夜间模式
+		     </p>
 	      </mu-list>
 	    </mu-drawer>
 	    <!-- 以上是侧边栏 -->
@@ -56,7 +59,8 @@ export default {
     return {
       open: this.$store.getters.showSide,
       docked: true,
-      src: require('../images/avatar2.jpg')
+      src: require('../images/avatar2.jpg'),
+      touch: false,
     }
   },
   methods: {
@@ -76,7 +80,16 @@ export default {
     	$('.hmenu').on('click',function(){
     		$(this).addClass('active').siblings().removeClass('active');
     	})
+    },
+    touchs () {
+		$('#hrapp').css({
+			background: '#ccc',
+			color: '#fff'
+		});
     }
+  },
+  mounted () {
+  		this.touchs()
   },
   components: {
   	tanc,
@@ -84,6 +97,26 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.demo-icon-tip{
+  display: inline-block;
+  cursor: default;
+  position: relative;
+}
+
+.demo-tip-setting p{
+  display: flex;
+  align-items: center;
+}
+
+.demo-tip-setting .mu-radio {
+  margin-left: 32px;
+}
+.demo-tip-setting .mu-radio:first-child{
+  margin-left: 0;
+}
+.demo-tip-setting .mu-switch {
+  margin-left: 8px;
+}
 	.title {
 		background:#333;
 		position:fixed;

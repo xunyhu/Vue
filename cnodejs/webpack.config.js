@@ -12,10 +12,10 @@ module.exports = {
 			'vue' : 'vue/dist/vue.js'
 		}
 	},
-	devServer : {
-		contentBase : './public',
-		inline : true
-	},
+	// devServer : {
+	// 	contentBase : './public',
+	// 	inline : true
+	// },
 	module : {
 		loaders : [{
 			test : /\.js$/,
