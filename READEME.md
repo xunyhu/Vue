@@ -9,6 +9,7 @@
 |[手脚架3](http://blog.csdn.net/fungleo/article/details/53199436)|[手脚架4](http://blog.csdn.net/ansu2009/article/details/53321044)|
 |[vue爬坑系列](http://www.cnblogs.com/wisewrong/p/6402183.html) |[vuex文档](https://vuex.vuejs.org/)|
 |[vue-router文档](https://router.vuejs.org/zh-cn/)|[vuejs仓库](https://github.com/vuejs)|
+|[vue系博客](http://blog.csdn.net/H1069495874/article/category/6717497)|-|
 ## 
 | Demo | Demo |
 | --------- | --------- |
